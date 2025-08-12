@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}Contact Luffy{% endblock %}
+{% block content %}
+
+<section class="mx-auto max-w-3xl">
+  <div class="mb-6 flex items-center justify-between">
+    <h2 class="text-2xl font-extrabold tracking-tight">Contact Luffy</h2>
+  </div>
+
+  {% if vuln %}
+  <div class="mb-6 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-amber-200">
+    Want to join my crew? Send me a message! 😃
+  </div>
+  {% endif %}
+
+  <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/70 to-slate-800/40 p-6 shadow-soft sm:p-8">
+    <div class="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-indigo-500/20 blur-3xl"></div>
+    <div class="relative">
+      <form method="post" class="space-y-6">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+        <div class="rounded-xl border border-rose-500/40 bg-rose-500/10 px-4 py-3 text-rose-200">
+          {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+
+        <div>
+          <label for="id_name" class="mb-2 block text-sm font-semibold text-slate-200">Name</label>
+          {{ form.name }}
+          {% if form.name.errors %}
+          <p class="mt-2 text-sm text-rose-300">{{ form.name.errors|join:", " }}</p>
+          {% endif %}
+        </div>
+
+        <div>
+          <label for="id_email" class="mb-2 block text-sm font-semibold text-slate-200">Email</label>
+          {{ form.email }}
+          {% if form.email.errors %}
+          <p class="mt-2 text-sm text-rose-300">{{ form.email.errors|join:", " }}</p>
+          {% endif %}
+        </div>
+
+        <div>
+          <label for="id_message" class="mb-2 block text-sm font-semibold text-slate-200">Message</label>
+          {{ form.message }}
+          {% if form.message.errors %}
+          <p class="mt-2 text-sm text-rose-300">{{ form.message.errors|join:", " }}</p>
+          {% endif %}
+        </div>
+
+        <div class="flex items-center justify-between pt-2">
+          <button
+            type="submit"
+            class="inline-flex items-center gap-2 rounded-xl border border-indigo-500/40 bg-indigo-500/20 px-4 py-2 font-semibold text-indigo-100 transition hover:bg-indigo-500/30 active:scale-[0.99]">
+            ✉️ Send
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const base =
+      "w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-slate-100 placeholder-slate-400 " +
+      "focus:outline-none focus:ring-2 focus:ring-indigo-400/60 focus:border-indigo-400/50 " +
+      "disabled:opacity-50 disabled:cursor-not-allowed";
+    const inputs = document.querySelectorAll("input[type='text'], input[type='email'], input:not([type]), textarea, select");
+    inputs.forEach(el => {
+      base.split(" ").forEach(c => el.classList.add(c));
+      if (!el.getAttribute("placeholder")) {
+        if (el.id === "id_name") el.setAttribute("placeholder", "Your name (e.g., Roronoa Zoro)");
+        if (el.id === "id_email") el.setAttribute("placeholder", "you@grandline.mail");
+        if (el.id === "id_message") el.setAttribute("placeholder", "Why should you join the Straw Hats?");
+      }
+      if (el.tagName.toLowerCase() === "textarea" && !el.getAttribute("rows")) {
+        el.setAttribute("rows", "5");
+      }
+    });
+  })();
+</script>
+
+{% endblock %}

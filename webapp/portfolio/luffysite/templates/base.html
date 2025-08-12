@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>{% block title %}Luffy's Portfolio{% endblock %}</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#0b1220",
+            card: "#0f1b35",
+          },
+          boxShadow: {
+            'soft': '0 10px 30px rgba(0,0,0,0.25)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    html, body { height: 100%; }
+    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-ink text-slate-100 antialiased selection:bg-indigo-500/30">
+  <div class="pointer-events-none fixed -top-32 -left-32 h-80 w-80 rounded-full bg-indigo-500/20 blur-3xl"></div>
+  <div class="pointer-events-none fixed -bottom-32 -right-32 h-96 w-96 rounded-full bg-cyan-500/20 blur-3xl"></div>
+
+  <header class="sticky top-0 z-30 border-b border-white/10 bg-slate-900/70 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-indigo-500/20 ring-1 ring-indigo-400/30">
+          🏴‍☠️
+        </span>
+        <strong class="text-lg font-extrabold tracking-tight">Monkey D. Luffy</strong>
+      </div>
+      <nav class="text-sm">
+        <a class="rounded-lg px-3 py-2 text-slate-200 hover:bg-white/5 hover:text-white transition"
+           href="/">Home</a>
+        <a class="rounded-lg px-3 py-2 text-slate-200 hover:bg-white/5 hover:text-white transition"
+           href="/contact/">Contact Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 py-10 flex-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="mt-auto border-t border-white/10 bg-slate-900/70">
+    <div class="mx-auto max-w-6xl px-4 py-6 text-sm text-slate-400">
+      Built with ❤️ for DjangoCon Africa 2025 | By <a href="https://github.com/tahaafarooq/djangocon-africa-2025-demo">@tahaafarooq</a>
+    </div>
+  </footer>
+</body>
+</html>

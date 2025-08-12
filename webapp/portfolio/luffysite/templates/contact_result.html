@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Contact Result{% endblock %}
+{% block content %}
+
+<section class="mx-auto max-w-3xl">
+  <div class="mb-6 flex items-center justify-between">
+    <h2 class="text-2xl font-extrabold tracking-tight">Contact Result</h2>
+  </div>
+
+  <div
+    class="mb-6 rounded-xl border px-4 py-3
+      {% if vuln %}
+        border-amber-500/30 bg-amber-500/10 text-amber-200
+      {% else %}
+        border-emerald-500/30 bg-emerald-500/10 text-emerald-200
+      {% endif %}">
+    {% if vuln %}
+      <strong class="font-semibold">Your message has been received ☺️</strong>
+    {% else %}
+      <strong class="font-semibold">Message:</strong>
+    {% endif %}
+  </div>
+
+  <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-slate-900/70 to-slate-800/40 p-6 shadow-soft sm:p-8">
+    <div class="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-indigo-500/20 blur-3xl"></div>
+    <div class="relative space-y-4">
+      {% if vuln %}
+        <div class="rounded-xl border border-amber-400/30 bg-amber-500/5 p-4">
+          <div class="text-sm text-slate-200">
+            Message: {{ rendered|safe }}
+          </div>
+        </div>
+      {% else %}
+        <div class="rounded-xl border border-emerald-400/30 bg-emerald-500/5 p-4">
+          <pre class="whitespace-pre-wrap break-words text-sm text-slate-200">Message: {{ rendered }}</pre>
+        </div>
+      {% endif %}
+
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+        <div class="flex gap-2">
+          <a
+            href="{% if vuln %}/contact/{% else %}/contact/safe/{% endif %}"
+            class="inline-flex items-center gap-2 rounded-xl border border-indigo-500/40 bg-indigo-500/20 px-4 py-2 text-sm font-semibold text-indigo-100 transition hover:bg-indigo-500/30 active:scale-[0.99]">
+            ↩︎ Back
+          </a>
+          <a
+            href="/"
+            class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:bg-white/10 active:scale-[0.99]">
+            🏠 Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+[Unit]
+Description=Luffy Django (Uvicorn)
+After=network.target
+
+[Service]
+Type=simple
+User=zoro
+
+WorkingDirectory=/opt/webapp/portfolio
+
+Environment=PYTHONUNBUFFERED=1
+
+ExecStart=/opt/webapp/venv/bin/uvicorn portfolio.asgi:application --host 0.0.0.0 --port 80
+
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+KillMode=mixed
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/opt/webapp/portfolio
+RuntimeDirectory=portfolio
+RuntimeDirectoryMode=0750
+
+[Install]
+WantedBy=multi-user.target

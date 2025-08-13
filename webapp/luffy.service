@@ -10,7 +10,7 @@ WorkingDirectory=/opt/webapp/portfolio
 
 Environment=PYTHONUNBUFFERED=1
 
-ExecStart=/opt/webapp/venv/bin/uvicorn portfolio.asgi:application --host 0.0.0.0 --port 80
+ExecStart=/opt/webapp/venv/bin/uvicorn portfolio.asgi:application --host 0.0.0.0 --port 8080
 
 Restart=always
 RestartSec=5

@@ -31,7 +31,7 @@ fi
 
 # 4) Make zoro own the deployment (so service running as zoro can access it)
 if id -u zoro >/dev/null 2>&1; then
-  chown -R zoro:zoro "${DEST_DIR}"
+  chown -R 1001:1001 "${DEST_DIR}"
 else
   echo "WARNING: user 'zoro' does not exist. Create it or adjust the service unit's User=." >&2
 fi

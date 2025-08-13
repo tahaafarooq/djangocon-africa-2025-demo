@@ -25,8 +25,18 @@ SECRET_KEY = 'django-insecure-sup^p8!e5__woj*2d7gk5=8d-j=6mwru1tnt64_6*g)o--alrc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "192.168.138.132",
+    "127.0.0.1",
+    "localhost",
+    "luffy.dsf",
+]
 
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://192.168.138.132:8080",
+    "http://luffy.dsf:8080",
+]
 
 # Application definition
 
